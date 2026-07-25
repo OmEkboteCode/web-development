@@ -36,7 +36,7 @@ ex: document.getElementsByTagName("p")
 - document.querySelector('p') //Selects first p element
 - document.querySelector('#myId') //selects first element with id = myId
 - document.querySelector('.myClass') //selects first element with class = myClass
-- document.querySelectorAll('p') //selects all p elements
+- document.querySelectorAll('p') //selects all p elements querySelectorAll() returns a NodeList containing all matching elements.
 ```
 
 <i>First object match is returened even if multiple objects present</i>
@@ -142,6 +142,22 @@ classList.toggle() //to toggle between add and remove
 - previousElementSibling / nextElementSibling
 
 - also  box.childElementCount for no. of children
+```js
+const html = document.querySelector("html");
+      console.log(html.parentElement); // null
+      console.log(html.parentNode); // document
+
+const board = document.querySelector("#board");
+
+const first = board.firstElementChild;
+const last = board.lastElementChild;
+
+console.log(first); // first child element
+console.log(last);  // last child element
+
+console.log(first.textContent);
+console.log(last.textContent);
+```
 
 ## Adding Elements
 
@@ -149,10 +165,11 @@ classList.toggle() //to toggle between add and remove
 document.createElement('p')
 
 appendChild(element)// At the end
-append(element) // Edit the inner Text
+append(element) // Edit the inner Text and ADD from last
 prepend(element) // Add at the start
 insertAdjacent(where, element)
 
+board.append(paragraph1, paragraph2, paragraph3);
 ```
  - insertAdjacentElement(position, element)
 Parameters
@@ -171,7 +188,7 @@ A string representing the position relative to the targetElement; must match (ca
 
 ![insertAdj](insertAdj.png)
 
-## Remooving Elements
+## Removing Elements
 
 - removeChild(element)
 

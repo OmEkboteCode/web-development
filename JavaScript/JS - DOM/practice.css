@@ -1,4 +1,4 @@
-.red{
+/* .red{
     color: red
 }
 
@@ -9,4 +9,14 @@
 .divStyle {
     border: 2px solid black;
     background-color: pink;
+} */
+
+.purple{
+    color: purple;
+    text-decoration: underline;
+}
+
+.buttonStyle{
+    background-color: blue;
+    color: white;
 }
