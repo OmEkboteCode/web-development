@@ -119,7 +119,7 @@ let input = document.querySelector("input");
 input.addEventListener("keydown", (event) =>{
     console.log(event)
     console.log("Key: ", event.key)
-    console.log("Code: ", event.key) //
+    console.log("Code: ", event.code) //
 })
 ```
 
@@ -171,6 +171,16 @@ form.addEventListener("submit", (event) => {
     console.log(event.target.elements[0].value); // Works because event.target is the form
 });
 
+
+const button = document.querySelector("#btn");
+
+button.addEventListener("click", (event) =>{
+    button.style.backgroundColor = "green";
+    button.style.color = "white";
+    console.log("Button was clicked!");
+    // this.style.border = "3px solid black";  If you use traditional function
+    event.target.style.border = "3px solid black";
+});
 ```
 
 ### More Important Events
@@ -178,7 +188,8 @@ form.addEventListener("submit", (event) => {
 1. change event
 - The change event occurs when the value of an element has been changed (only works on <input>, <textarea> and <select> elements).
 
-<b>After(after typing anything) we leave the input box and click or do any action then the change occurs</b>
+<b>After(after typing anything) we leave the input box and click or do any action then the change occurs. It is a
+event fires when an input loses focus after its value changed</b>
 
 ```js
 let form = document.querySelector("form");

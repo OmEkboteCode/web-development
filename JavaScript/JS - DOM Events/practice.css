@@ -1,0 +1,56 @@
+/* C1 */
+
+/* body{
+    font-family: Arial;
+    text-align:center;
+    margin-top:50px;
+}
+
+#box{
+    width:200px;
+    height:120px;
+    background-color:lightgray;
+    margin:20px auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border:2px solid gray;
+}
+
+button{
+    padding:10px 20px;
+    margin:10px;
+} */
+
+
+
+/* C3 */
+
+/* body{
+    font-family: Arial;
+    margin:40px;
+}
+
+#preview{
+    margin-top:20px;
+    font-size:20px;
+    font-weight:bold;
+    color:steelblue;
+} */
+
+/* C4 */
+
+body{
+    font-family: Arial;
+    margin:40px;
+}
+
+textarea{
+    width:300px;
+    height:120px;
+}
+
+#status{
+    margin-top:15px;
+    font-weight:bold;
+}
