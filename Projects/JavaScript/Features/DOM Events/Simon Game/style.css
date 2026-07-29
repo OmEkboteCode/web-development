@@ -1,4 +1,4 @@
-body{
+/* body{
     text-align: center;
     background-color: #AEE2FF;
 }
@@ -39,4 +39,57 @@ body{
 
 .userFlash {
      background-color: black;
+} */
+
+body {
+    text-align: center;
+    background-color: whitesmoke;
+}
+
+.button {
+    height: 15rem;
+    width: 15rem;
+    border: 0.75rem solid black;
+    margin: 1rem;
+    border-radius: 15%;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+
+.yellow {
+    background-color: yellow;
+}
+
+.red {
+    background-color: red;
+}
+
+.green {
+    background-color: #00C68D;
+}
+
+.blue {
+    background-color: #0055DA;
+}
+
+.flash {
+    background-color: white;
+}
+
+.userFlash {
+     background-color: black;
+}
+
+h3 {
+    text-align: left;
+    margin-left: 8rem;
+    font-size: xx-large;
+}
+
+#startButton{
+    border: 5px solid black;
 }
