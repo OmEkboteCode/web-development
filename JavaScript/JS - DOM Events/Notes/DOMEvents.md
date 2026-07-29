@@ -211,3 +211,50 @@ email.addEventListener("change", function() {
 - The input event fires when the <b>value</b> of an <input> <textarea> and <select> element has been changed.
 
 <i>Even the simplest change as typing any letter fires this event. But NON Character doesn't fire this event</i>
+
+
+### Event Bubbling
+
+- Event bubbling in JavaScript is a mechanism where an event triggered on a child element propagates upward through its ancestors in the DOM. It allows parent elements to respond to events triggered by their child elements. . The order goes from the inner target element to the outer root element.
+
+<b>Fixing the problem with stopPropagation()</b>
+
+```HTML
+<body>
+    <div>
+        <ul>
+            <li>one</li>
+            <li>two</li>
+            <li>three</li>
+        </ul>
+    </div>
+    <script src="app.js"></script>
+</body>
+```
+
+```js
+const div = document.querySelector("div");
+const ul = document.querySelector("ul");
+const lists = document.querySelectorAll("li");
+
+div.addEventListener("click", (event) =>{
+    event.stopPropagation();
+    console.log("div was clicked");
+})
+ul.addEventListener("click", (event) =>{
+    event.stopPropagation();
+    console.log("ul was clicked");
+})
+
+for(list of lists){
+    list.addEventListener("click", (event) =>{
+        event.stopPropagation();
+        console.log("List was clicked")
+    })
+}
+```
+
+### Event Delegation
+
+- Event delegation is a design pattern where you attach a single event listener to a parent element to manage events for all of its current and future child elements. This technique works by leveraging <i>event bubbling</i>, a mechanism where an event triggered on a nested element propagates upwards through its ancestors in the DOM tree
+
