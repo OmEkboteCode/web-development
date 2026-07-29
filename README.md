@@ -8,8 +8,8 @@ This repository documents my journey of learning web development from the ground
 - CSS
 - JavaScript
 - Bootstrap
+- Node.js
 - Future: React
-- Future: Node.js
 - Future: Express
 - Future: MongoDB
 
