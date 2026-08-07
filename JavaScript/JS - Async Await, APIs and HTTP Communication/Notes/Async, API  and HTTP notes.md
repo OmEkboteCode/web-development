@@ -138,6 +138,36 @@ www.json.org
 
 JSON, which stands for JavaScript Object Notation, is a lightweight, text-based format used for storing and exchanging data. It is essentially a organized way to write down data so that both humans can easily read it and computers can quickly parse it. Despite having "JavaScript" in its name, JSON is completely language-independent and works seamlessly with Python, Java, C++, and almost every other programming language.
 
+<b>JSON object property names must be inside double quotes</b>
+
+So look at:
+
+name: "Glacier"
+
+In JavaScript, that's valid.
+
+In JSON, you need:
+
+"name": "Glacier"
+
+Same for:
+
+age: 19
+
+becomes:
+
+"age": 19
+
+And:
+
+skills: ["JavaScript", "Node.js"]
+
+becomes:
+
+"skills": ["JavaScript", "Node.js"]
+
+Notice that the array doesn't fundamentally change.
+
 ```js
 {
   "id": 101,
@@ -156,6 +186,13 @@ JSON, which stands for JavaScript Object Notation, is a lightweight, text-based 
 
 - JSON.parse(data) Method
 To parse a string data into a JS object
+
+JSON is data format, not a JavaScript object.
+
+So:
+
+JSON.stringify(student) // object → string
+JSON.parse(jsonStudent) // string → object
 
 ```js
 const jsonResponse = '{"activity":"Clean out your car","availability":0.08,"type":"busywork","participants":1,"price":0,"accessibility":"Minor challenges","duration":"minutes","kidFriendly":true,"link":"","key":"2896176"}'
@@ -176,6 +213,19 @@ const student = {
 CONSOLE
 JSON.stringify(student)
 '{"name":"Om","age":"20"}'
+
+const student = {
+    name: "Glacier",
+    age: 19,
+    skills: ["JavaScript", "Node.js"]
+};
+
+
+const jsonStudent = JSON.stringify(student);
+
+const studentObject = JSON.parse(jsonStudent);
+
+console.log(studentObject.skills[1])
 ```
 ## Testing API Reqests
 Tools
@@ -197,6 +247,34 @@ Examples:
 - GET
 - POST
 - DELETE
+| Request                    | Think                | HTTP verb            |
+| -------------------------- | -------------------- | -------------------- |
+| 1. Retrieve all books      | Get data             | **GET**              |
+| 2. Create a new student    | Create data          | **POST**             |
+| 3. Delete a comment        | Remove data          | **DELETE**           |
+| 4. Update a user's profile | Modify existing data | **PUT** or **PATCH** |
+
+🧠 Code-reading connection
+
+When you eventually see:
+
+axios.get(url)
+
+read it as:
+
+axios → make an HTTP request → GET → retrieve something from this URL
+
+And:
+
+axios.post(url, data)
+
+read it as:
+
+axios → make an HTTP request → POST → send data to create something
+
+So don't memorize GET = retrieve as an isolated fact. Build the mental chain:
+
+Intent → HTTP verb → Axios method
 
 ### Status Codes
 HTTP status codes are three-digit numbers sent by a server to a browser or client to indicate the outcome of a request. 
@@ -233,7 +311,7 @@ header, value
 example:
 Calling the API
 Authentication
-No authentication is required to use the icanhazdadjoke.com API. Enjoy :)
+No authentication is required to use the icanhazdadjoke.com API. Enjoy
 
 API response format
 All API endpoints follow their respective browser URLs, but we adjust the response formatting to be more suited for an API based on the provided HTTP Accept header.
@@ -366,7 +444,7 @@ const url = "https://icanhazdadjoke.com/";
 async function getJokes() {
     try {
         const configuration = {
-            headers: {Accept: "application/json"}
+            headers: {Accept: "application/json"} //I want the server's response in JSON format. Accept is the header name and application/json is the value
         }
         const response = await axios.get(url, configuration);
         console.log(response.data);
@@ -378,3 +456,100 @@ async function getJokes() {
 
 
 ### Updating Query Strings
+
+```js
+const url = "http://universities.hipolabs.com/search?name=";
+
+const button = document.querySelector("button");
+
+button.addEventListener("click", async () =>{
+    let country = document.querySelector("input").value;
+    console.log(country)
+    getColleges(country);
+    let collegesArray = await getColleges(country);
+    showColleges(collegesArray)
+});
+
+function showColleges(collegesArray) {
+    let list = document.querySelector("#list")
+    list.innerText = "";
+    for(college of collegesArray){
+        console.log(college.name);
+
+        let collegeList = document.createElement("li");
+        collegeList.innerText = college.name;
+        list.appendChild(collegeList);
+    }
+}
+
+async function getColleges(country) {
+    try{
+        const response = await axios.get(url + country);
+        return response.data;
+    } catch(error){
+        console.log("Error: ", error);
+        return [];
+    }
+}
+```
+
+
+
+
+
+MORE EXAMPLES
+
+1. 
+```js
+
+function saveToDb(data) {
+    return new Promise((resolve, reject) => {
+        const number = Math.floor(Math.random() * 10) + 1;
+        
+        if (number > 4) {
+            resolve(`${data} saved`);
+        } else {
+            reject("Weak Connection");
+        }
+    });
+}
+
+async function saveDate(){
+    try{
+        await saveToDb("Student");
+        console.log("Data 1 saved");
+        await saveToDb("Course");
+        console.log("Data 2 saved");
+        await saveToDb("Marks");
+        console.log("Data 3 saved");
+        console.log("All data saved successfully");
+    } catch(error) {
+        console.log("Database Error: ", error);
+    }
+} 
+
+saveDate();
+```
+
+
+Read it like English:
+
+saveData()
+  ↓
+try:
+  save Student
+  wait
+  save Course
+  wait
+  save Marks
+  wait
+  say everything succeeded
+
+if ANY save rejects
+  ↓
+catch
+  ↓
+Database Error
+<i>
+One other thing: async isn't needed on saveToDb() because that function already returns a Promise. The function containing the awaits, saveData(), is the one that needs async.
+</i>
