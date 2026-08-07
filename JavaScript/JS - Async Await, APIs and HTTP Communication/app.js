@@ -199,3 +199,4 @@ async function getColleges(country) {
         return [];
     }
 }
+
