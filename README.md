@@ -19,6 +19,8 @@ This repository documents my journey of learning web development from the ground
 - CSS
 - JavaScript
 - Bootstrap
+- Terminal, Git & GitHub
+- Node.js
 - Practice
 - Projects
 - Engineering Log
