@@ -105,6 +105,14 @@ exports.g = 9.8;
 exports.PI = 3.14;
 
 exports = 5; // This doesn't work and will be treated variable
+
+
+OR  if type = "module"
+
+export const createStudent = (name, age) => {
+    return `name: ${name}
+    age: ${age}`
+}
 ```
 
 ## module.exports (directory)
@@ -173,7 +181,7 @@ figlet("Stanford!!", function (err, data) {
 - Can also add new packages to this project using npm install <package name>
 
 ```js
-$ npm init
+$ npm init    // OR npm init -y
 This utility will walk you through creating a package.json file.
 It only covers the most common items, and tries to guess sensible defaults.
 
@@ -259,6 +267,10 @@ console.log(sumation(10, 15));
 
 node script.js
 ```
+| `package.json`       | You use                        |
+| -------------------- | ------------------------------ |
+| `"type": "commonjs"` | `require()` + `module.exports` |
+| `"type": "module"`   | `import` + `export`            |
 
 
 ## Changes handling
@@ -323,3 +335,31 @@ node_modules/
 means:
 
 > **"Git, ignore directories named `node_modules` wherever they appear inside this repository."**
+
+
+## Examples
+
+```js
+export const createStudent = (name, age) => {
+
+
+
+return name: ${name}
+age: ${age}
+
+
+
+}export { createStudent } from "./student.js";
+
+import { createStudent } from "./utils/index.js";
+
+
+
+const argumentName = process.argv[2];
+
+const argumentAge = process.argv[3];
+
+
+
+console.log(createStudent(argumentName, argumentAge));
+```
