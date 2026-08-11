@@ -64,15 +64,15 @@ app.use((req, res) => {
 ## Sending a Response
 
 In Express.js, the Request (req) and Response (res) objects are the two fundamental components passed to route handlers to handle communication between the client and server.
-Here is a comprehensive overview of how to interact with both objects, as detailed in the Express.js API Reference. [5]  
+Here is a comprehensive overview of how to interact with both objects, as detailed in the Express.js API Reference.
+
 ## The Request Object (re  ) 
 The  object represents the incoming HTTP request from the client (e.g., browser, mobile app). It contains details like parameters, headers, and body data. 
 
 • req.body: Contains data submitted in the request body (requires middleware like express.json()). 
 • req.params: Holds route parameters extracted from the URL path (e.g.,  → req.params.id). 
 • req.query: Parses URL query string parameters (e.g.,  → req.query.q). 
-• req.headers: Provides access to incoming HTTP headers (e.g., req.headers['authorization']). 
-• req.method: Identifies the HTTP method used  (e.g., GET, POST).
+
 
 ## The Response Object (res) 
 The  object represents the HTTP response that the Express application transmits back to the client. It controls headers, status codes, and the payload. 
@@ -82,17 +82,8 @@ The  object represents the HTTP response that the Express application transmits 
 res.send(Buffer.from('whoop'));
 res.send({ some: 'json' });
 res.send('<p>some html</p>');
-res.status(404).send('Sorry, we cannot find that!');
-res.status(500).send({ error: 'something blew up' });
-    console.log("Request received");
-    const fruits = "<h1>Fruits</h1> <ul><li>apple</li><li>mango</li></ul>"
-    res.send(fruits)
-```
-• res.json(): Sends a JSON-formatted response and sets the proper Content-Type header. 
-• res.status(): Sets the HTTP status code explicitly (e.g., res.status(404)). 
-• res.set(): Configures HTTP response header fields. 
-• res.redirect(): Redirects the client's browser to a different URL path. 
 
+```
 
 ## Routing
 
@@ -239,3 +230,111 @@ app.get("/search", (req, res) => {
 
 
 ## <i><b>Params are baked into the route path. Query is extra information attached to the URL.</b></i>
+
+## Examples
+
+```js
+
+const express = require("express");
+
+const app = express();
+
+const port = 3000;
+
+app.listen(port, () => {
+    console.log(`App is listening on the Port: ${port}`);
+});
+
+
+app.use((req, res, next) => {
+    console.log("Request received");
+    next();
+});
+
+app.get("/", (req, res) => {
+    res.send("Welcome to Campus Library");
+});
+```
+
+```js
+
+const express = require("express");
+
+const app = express();
+
+const port = 3000;
+
+app.listen(port, () => {
+    console.log(`App is listening on the Port: ${port}`);
+});
+
+app.get("/", (req, res) => {
+    res.send("Welcome to Campus Library");
+});
+app.get("/about", (req, res) => {
+    res.send("About Campus Library");
+});
+app.get("/contact", (req, res) => {
+    res.send("Contact Campus Library");
+});
+
+app.get("/users/:username/:id", (req, res) => {
+    const {username, id} = req.params;
+    const greeting = `<b>Welcome ${username}! Your user ID is ${id}</b>`
+    res.send(greeting)
+})
+
+
+app.get("/search", (req, res) => {
+    const {q , author} = req.query;
+    res.send(`<b>Searching for ${q} by ${author}</b>`)
+})
+
+app.get("/books/:category", (req, res) => {
+    const {category} = req.params;
+    res.send(`<i>Books in ${category} category</i>`)
+})
+
+
+
+app.post("/books", (req, res) => {
+    res.send("New book submitted successfully")
+})
+
+app.get("/*splat", (req, res) => {
+    res.send("404 - Page Not Found")
+})
+
+
+app.get("/", (req, res) => {
+    res.send("Campus Library");
+});
+
+app.get("/books/:category", (req, res) => {
+    const { category } = req.params;
+    res.send(`Books: ${category}`);
+});
+
+app.get("/search", (req, res) => {
+    const { q, type} = req.query;
+    res.send(`Searching for: ${q}
+Type: ${type}`);
+});
+
+app.post("/books", (req, res) => {
+    res.send("Book added");
+});
+
+app.get("/students/:name", (req, res) => {
+    const {name} = req.params
+    res.send(`Welcome ${name}!!`);
+});
+
+app.put("/books", (req, res) => {
+    res.send("Book updated")
+})
+app.delete("/books", (req, res) => {
+    res.send("Book deleted")
+})
+
+```
