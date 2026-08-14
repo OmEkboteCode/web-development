@@ -1,0 +1,44 @@
+body{
+    background-color: aliceblue;
+    font-family: 'Times New Roman', Times, serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h3{
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+h4{
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+#introduction{
+    margin-bottom: 30px;
+}
+
+#skills,
+#education,
+#research {
+    margin-top: 25px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+#skills ul,
+#research ul{
+    padding-left: 25px;
+}
+
+li {
+    margin-bottom: 8px;
+}

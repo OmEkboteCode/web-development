@@ -1,0 +1,45 @@
+<%- include("includes/head.ejs") %>
+<body>
+    <h1>Portfolio</h1>
+
+    <div id="introduction">
+        <h3>Name: <%= name %></h3>
+        <h4><%= role %></h4>
+        <p>
+            <%= about %>
+        </p>
+    </div>
+    <div id="skills">
+        <h3>Skills</h3>
+        <ul>
+            <% for(let skill of skills) {%>
+                <li><%= skill %></li>
+            <% } %>
+        </ul>
+    </div>
+    
+    <div id="education">
+        <h3>Education</h3>
+        <% for(let item of education) {%>
+            <h4>Degree: <%= item.degree %></h4>
+            <p>Institution: <%= item.institution %></p>
+            <p>Year: <%= item.year %></p>
+        <% } %>
+    </div>
+    <div id="research">
+        <h3>Research</h3>
+        <% if(research) {%>
+            Research Interests
+            <ul>
+                <% for(let item of researchInterests){%>
+                    <li><%= item %></li>
+                <% } %>
+            </ul>
+
+        <% } else{%>
+            <p>Research interests currently being explored.</p>
+        <% } %>
+    </div>
+    <%- include("includes/footer.ejs") %>
+</body>
+</html>

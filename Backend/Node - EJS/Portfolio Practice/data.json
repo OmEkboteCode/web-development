@@ -1,0 +1,25 @@
+{
+        "name": "Om Ekbote", 
+        "role": "Aspiring System Researcher",
+        "about": "Hi, my name is Om. I aspire to become a researcher.",
+        "skills": ["C++", "Javascript", "DSA", "Operating Systems"],
+        "education": [
+            {
+                "degree": "B.E CSE",
+                "institution": "SVCE Bangalore",
+                "year": 2029
+            },
+            {
+                "degree": "PUC",
+                "institution": "P. C. Jabin College",
+                "year": 2024
+            }
+            
+        ],
+        "research": true,
+        "researchInterests": [
+            "Operating Systems",
+            "Computer Architecture",
+            "Distributed Systems"
+        ]
+}

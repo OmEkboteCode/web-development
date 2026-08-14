@@ -274,3 +274,51 @@ app.get("/ig/:username", (req, res) => {
     Phone No: +91 XXXXXXXXX
 </div>
 ```
+
+
+## Spread the JSON object
+
+- Once you understand what's happening, you can make it much shorter:
+
+```js
+app.get("/profile/:username", (req, res) => {
+    const { username } = req.params;
+    const portfolioData = require("./data.json");
+
+
+    res.render("profile.ejs", {
+        username,
+        ...portfolioData
+    });
+});
+```
+
+- This is probably what you're looking for when you say "How do I combine data.json here?"
+
+#### The ...portfolioData means:
+
+- Take all the properties inside portfolioData and put them into this object.
+
+So:
+
+```js
+{
+    username,
+    ...portfolioData
+}
+
+effectively becomes:
+
+{
+    username: "whatever-is-in-the-url",
+    name: "Om Ekbote",
+    role: "Aspiring System Researcher",
+    about: "...",
+    skills: [...],
+    education: [...],
+    research: true,
+    researchInterests: [...]
+}
+```
+
+- That's a very useful JavaScript pattern to learn. 🧠
