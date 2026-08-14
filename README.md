@@ -9,6 +9,8 @@ This repository documents my journey of learning web development from the ground
 - JavaScript
 - Bootstrap
 - Node.js
+- Express
+- EJS
 - Future: React
 - Future: Express
 - Future: MongoDB
