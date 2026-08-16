@@ -57,6 +57,54 @@ app.post("/register", (req, res) => {
     res.send(`Standard POST response. Welcome, ${user}`);
 });
 ```
+```js
+const express = require("express");
+const app = express();
+
+const port = 8080;
+app.use(express.urlencoded({ extented: true }));
+app.use(express.json());
+
+
+app.get("/developers", (req, res) => {
+    const {name, skill} = req.query;
+    res.send(`Developer: ${name}
+Primary Skill: ${skill}`);
+});
+
+app.post("/register", (req, res) => {
+    const {name, experience, language} = req.body;
+    res.send(`Welcome ${name} <br>
+Primary Language: ${language}<br>
+Experience: ${experience} years`)
+})
+
+app.post("/api/developers", (req, res) =>{
+    const {name, experience, language} = req.body;
+    res.json({
+        "message": "Developer registered succesfully",
+        "developer": {
+            "name": name,
+            "language": language,
+            "experience": experience
+            }
+        }
+    )
+})
+
+app.listen(port, () => {
+    console.log(`Listening to Port ${port}`);
+});
+
+//IN BODY JSON THUNDER CLIENT POST
+{
+  "name": "Glacier",
+  "language": "C++",
+  "experience": 1
+}
+
+```
+
 
 ## OOPS (Revisiting JS)
 Object Oriented Programming
@@ -191,7 +239,7 @@ class Person {
         this.name = name;
         this.age = age;
     }
-    talk() {
+    talk() {  //Creating a method.
     console.log(`Hi, my name is ${this.name}`)
     }
 
@@ -219,7 +267,7 @@ class Person {
         this.name = name;
         this.age = age;
     }
-    talk() {
+    talk() { //Creating a method.
         console.log(`Hi, my name is ${this.name}`)
     }
 }
@@ -261,7 +309,7 @@ class Mammal {
         this.name = name;
         this.type = "warm-blooded";
     }
-    eat() {
+    eat() { //Creating a method.
         console.log("I am eating");
     }
 }
