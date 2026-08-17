@@ -11,7 +11,7 @@ app.use(methodOverride('_method'))
 
 
 
-app.set("views engine", "ejs");
+app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static (path.join(__dirname, "public")));
 
@@ -71,13 +71,13 @@ app.patch("/posts/:id", (req, res) =>{
 
 app.get("/posts/:id/edit", (req, res) => {
     let { id } = req.params;
-    let post = posts.filter((p) => id === p.id);
+    let post = posts.find((p) => id === p.id);
     res.render("edit.ejs", {post})
 })
 
 app.delete("/posts/:id", (req,res) => {
     let { id } = req.params;
-    posts = posts.find((p) => id !== p.id)
+    posts = posts.filter((p) => id !== p.id)
     res.redirect(`/posts`)
 })
 
