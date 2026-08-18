@@ -6,12 +6,12 @@
     <title>Edit Post</title>
 </head>
 <body>
-    <h2>Edit Your</h2>
-    <p>Post ID: <%= post.id %></p>
-    <p>Post Username: @<%= post.username %></p>
+    <h2>Edit Post</h2>
+    <b>Post Id: <%= post.id %></b>
+    <br>
+    <b>Post Username: @<%= post.username %></b>
     <form method="post" action="/posts/<%= post.id %>?_method=PATCH">
-        <textarea rows="8" cols="35" name="content"><%= post.content %></textarea>
-        <br>
+        <textarea cols="35" rows="8" name="content"><%= post.content %></textarea>
         <button>Submit</button>
     </form>
 </body>
