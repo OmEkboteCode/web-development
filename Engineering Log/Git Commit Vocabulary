@@ -1,0 +1,399 @@
+Absolutely. And I think the real problem isn't that you need **more fancy words**. You need a **small, reliable vocabulary of verbs that describe different kinds of changes**.
+
+Here's a practical commit vocabulary you can keep beside you while working.
+
+# Git Commit Vocabulary
+
+## 🟢 Adding Something New
+
+Use these when introducing a new piece of functionality.
+
+| Verb        | Meaning                                            | Example                               |
+| ----------- | -------------------------------------------------- | ------------------------------------- |
+| `Add`       | Introduce something new                            | `Add post deletion`                   |
+| `Create`    | Create a new file, component, module, etc.         | `Create post model`                   |
+| `Introduce` | Bring a new concept or capability into the project | `Introduce authentication middleware` |
+| `Implement` | Build functionality according to a requirement     | `Implement user authentication`       |
+| `Build`     | Construct a larger feature                         | `Build shopping cart interface`       |
+| `Develop`   | Create a more substantial feature/system           | `Develop inventory management system` |
+| `Integrate` | Connect an external system/library/API             | `Integrate MySQL database`            |
+| `Configure` | Set up configuration                               | `Configure Express server`            |
+| `Enable`    | Turn on a capability                               | `Enable EJS view rendering`           |
+| `Register`  | Add something to a system's registry/configuration | `Register Express routes`             |
+
+---
+
+# 🔵 Modifying Existing Code
+
+Use these when something already exists but you're changing it.
+
+| Verb      | Meaning                                                 | Example                             |
+| --------- | ------------------------------------------------------- | ----------------------------------- |
+| `Update`  | General modification                                    | `Update Express notes`              |
+| `Modify`  | Change existing behavior/code                           | `Modify post validation`            |
+| `Adjust`  | Make a small change                                     | `Adjust cart quantity handling`     |
+| `Change`  | General behavioral change                               | `Change checkout flow`              |
+| `Revise`  | Improve or rewrite existing content                     | `Revise API documentation`          |
+| `Extend`  | Add capability to an existing feature                   | `Extend cart with quantity support` |
+| `Expand`  | Make functionality broader                              | `Expand product filtering`          |
+| `Enhance` | Improve an existing feature                             | `Enhance error handling`            |
+| `Improve` | Make something better                                   | `Improve form validation`           |
+| `Refine`  | Make an existing implementation cleaner or more precise | `Refine post creation flow`         |
+
+---
+
+# 🟡 Fixing Problems
+
+These are especially useful because they tell future-you **why the commit happened**.
+
+| Verb       | Meaning                                   | Example                                |
+| ---------- | ----------------------------------------- | -------------------------------------- |
+| `Fix`      | Correct a bug                             | `Fix incorrect cart total`             |
+| `Resolve`  | Resolve a known issue                     | `Resolve duplicate post IDs`           |
+| `Correct`  | Correct incorrect behavior/data           | `Correct product price calculation`    |
+| `Repair`   | Restore broken functionality              | `Repair post editing route`            |
+| `Handle`   | Add handling for a situation              | `Handle missing post requests`         |
+| `Prevent`  | Stop something bad from happening         | `Prevent duplicate cart items`         |
+| `Guard`    | Add protection against invalid conditions | `Guard against empty form submissions` |
+| `Validate` | Add validation                            | `Validate post creation input`         |
+| `Sanitize` | Clean unsafe/unwanted input               | `Sanitize user input`                  |
+
+### ⭐ Especially useful
+
+Instead of:
+
+> `Fix stuff`
+
+say:
+
+> `Fix missing post validation`
+
+Instead of:
+
+> `Update error`
+
+say:
+
+> `Handle missing post with 404 response`
+
+Much more informative.
+
+---
+
+# 🟣 Refactoring
+
+These are extremely valuable as you become a better engineer.
+
+| Verb          | Meaning                                                           | Example                                          |
+| ------------- | ----------------------------------------------------------------- | ------------------------------------------------ |
+| `Refactor`    | Change internal structure without intentionally changing behavior | `Refactor cart operations into helper functions` |
+| `Extract`     | Move logic into a separate function/module                        | `Extract post lookup into helper`                |
+| `Consolidate` | Combine duplicated or scattered logic                             | `Consolidate validation logic`                   |
+| `Simplify`    | Make code easier or less complicated                              | `Simplify checkout logic`                        |
+| `Separate`    | Split responsibilities                                            | `Separate route and database logic`              |
+| `Encapsulate` | Hide implementation behind a function/module/class                | `Encapsulate cart calculations`                  |
+| `Decompose`   | Break a large piece into smaller pieces                           | `Decompose checkout workflow`                    |
+| `Modularize`  | Organize code into independent modules                            | `Modularize post management`                     |
+| `Reorganize`  | Change code organization                                          | `Reorganize Express routes`                      |
+| `Decouple`    | Reduce unnecessary dependencies between components                | `Decouple cart and product logic`                |
+
+These become particularly useful once you're doing serious code reviews.
+
+---
+
+# 🟠 Removing Things
+
+| Verb        | Meaning                                         | Example                        |
+| ----------- | ----------------------------------------------- | ------------------------------ |
+| `Remove`    | Delete unnecessary code/functionality           | `Remove duplicate validation`  |
+| `Delete`    | Permanently remove something                    | `Delete unused routes`         |
+| `Drop`      | Remove a feature/dependency/table/etc.          | `Drop unused database column`  |
+| `Clean`     | Remove clutter or unnecessary files/code        | `Clean unused imports`         |
+| `Prune`     | Remove unnecessary pieces                       | `Prune obsolete configuration` |
+| `Deprecate` | Mark something as no longer recommended for use | `Deprecate legacy API route`   |
+
+**Don't use `Delete` and `Remove` randomly.**
+
+For example:
+
+> `Remove unused function`
+
+sounds natural.
+
+> `Delete user authentication`
+
+sounds like you're intentionally destroying a feature.
+
+---
+
+# 🟤 Improving Code Quality
+
+| Verb          | Meaning                                                    | Example                       |
+| ------------- | ---------------------------------------------------------- | ----------------------------- |
+| `Clean`       | Remove unnecessary complexity/clutter                      | `Clean cart validation logic` |
+| `Simplify`    | Reduce complexity                                          | `Simplify product lookup`     |
+| `Optimize`    | Improve performance/resource usage                         | `Optimize product search`     |
+| `Improve`     | General quality improvement                                | `Improve error handling`      |
+| `Harden`      | Make software more resistant to failures/security problems | `Harden authentication flow`  |
+| `Strengthen`  | Improve robustness                                         | `Strengthen input validation` |
+| `Standardize` | Make things follow a consistent pattern                    | `Standardize API responses`   |
+| `Normalize`   | Put data/structure into a consistent form                  | `Normalize product data`      |
+
+Be careful with **optimize**.
+
+Don't use:
+
+> `Optimize code`
+
+just because you changed code.
+
+Use it when you actually improved performance or resource usage.
+
+---
+
+# 🔴 Error Handling
+
+This is a particularly useful vocabulary category for backend development.
+
+| Verb       | Example                                 |
+| ---------- | --------------------------------------- |
+| `Handle`   | `Handle database connection errors`     |
+| `Catch`    | `Catch failed API requests`             |
+| `Prevent`  | `Prevent invalid form submissions`      |
+| `Validate` | `Validate request parameters`           |
+| `Guard`    | `Guard against missing user data`       |
+| `Recover`  | `Recover from failed database requests` |
+| `Fallback` | `Add fallback for missing images`       |
+
+---
+
+# 🟦 Testing
+
+| Verb       | Example                           |
+| ---------- | --------------------------------- |
+| `Test`     | `Test post creation flow`         |
+| `Add`      | `Add tests for cart calculations` |
+| `Cover`    | `Cover post deletion edge cases`  |
+| `Verify`   | `Verify checkout behavior`        |
+| `Validate` | `Validate API responses`          |
+| `Check`    | `Check invalid login handling`    |
+| `Assert`   | `Assert correct cart totals`      |
+
+For example:
+
+> `Add tests for post creation`
+
+is much better than:
+
+> `Testing`
+
+---
+
+# 📚 Documentation
+
+| Verb       | Example                             |
+| ---------- | ----------------------------------- |
+| `Document` | `Document API endpoints`            |
+| `Add`      | `Add Node.js learning notes`        |
+| `Update`   | `Update project README`             |
+| `Explain`  | `Explain Express middleware flow`   |
+| `Describe` | `Describe database setup`           |
+| `Record`   | `Record API testing results`        |
+| `Clarify`  | `Clarify installation instructions` |
+
+---
+
+# 📦 Dependencies and Packages
+
+| Verb        | Example                               |
+| ----------- | ------------------------------------- |
+| `Install`   | `Install Express and EJS`             |
+| `Add`       | `Add UUID dependency`                 |
+| `Update`    | `Update Express dependency`           |
+| `Upgrade`   | `Upgrade Express to latest version`   |
+| `Downgrade` | `Downgrade package for compatibility` |
+| `Remove`    | `Remove unused Axios dependency`      |
+| `Replace`   | `Replace deprecated package`          |
+| `Pin`       | `Pin dependency versions`             |
+
+---
+
+# 🗄️ Database Changes
+
+Since you're getting into MySQL now, these will become useful.
+
+| Verb      | Example                     |
+| --------- | --------------------------- |
+| `Create`  | `Create users table`        |
+| `Add`     | `Add posts table`           |
+| `Alter`   | `Alter users table schema`  |
+| `Modify`  | `Modify post schema`        |
+| `Rename`  | `Rename username column`    |
+| `Drop`    | `Drop obsolete column`      |
+| `Seed`    | `Seed initial product data` |
+| `Migrate` | `Migrate posts to MySQL`    |
+| `Index`   | `Add index for post lookup` |
+
+---
+
+# 🌐 API / Backend
+
+You'll probably use these constantly as your projects grow.
+
+| Verb        | Example                            |
+| ----------- | ---------------------------------- |
+| `Add`       | `Add POST endpoint for products`   |
+| `Implement` | `Implement post creation endpoint` |
+| `Expose`    | `Expose product API endpoint`      |
+| `Connect`   | `Connect API to MySQL`             |
+| `Integrate` | `Integrate REST API with frontend` |
+| `Handle`    | `Handle POST request errors`       |
+| `Validate`  | `Validate API request body`        |
+| `Return`    | `Return 404 for missing posts`     |
+| `Secure`    | `Secure authenticated routes`      |
+
+---
+
+# 🖥️ Frontend / UI
+
+| Verb         | Example                         |
+| ------------ | ------------------------------- |
+| `Build`      | `Build shopping cart interface` |
+| `Add`        | `Add product filter`            |
+| `Create`     | `Create checkout page`          |
+| `Style`      | `Style product cards`           |
+| `Render`     | `Render products dynamically`   |
+| `Update`     | `Update cart display`           |
+| `Improve`    | `Improve mobile layout`         |
+| `Responsive` | `Make product grid responsive`  |
+| `Connect`    | `Connect form to API`           |
+
+---
+
+# 🔀 Git / Project Structure
+
+| Verb         | Example                            |
+| ------------ | ---------------------------------- |
+| `Initialize` | `Initialize Node.js project`       |
+| `Configure`  | `Configure Git repository`         |
+| `Organize`   | `Organize project directories`     |
+| `Move`       | `Move routes into separate module` |
+| `Rename`     | `Rename utility module`            |
+| `Split`      | `Split routes into modules`        |
+| `Merge`      | `Merge feature branch`             |
+| `Revert`     | `Revert incorrect configuration`   |
+
+---
+
+# 🧠 Learning / Practice Repository
+
+Since your repository is also documenting your learning journey, these are useful:
+
+| Verb          | Example                           |
+| ------------- | --------------------------------- |
+| `Practice`    | `Practice Express routing`        |
+| `Explore`     | `Explore EJS templating`          |
+| `Experiment`  | `Experiment with async functions` |
+| `Learn`       | `Learn Node.js modules`           |
+| `Study`       | `Study HTTP request handling`     |
+| `Demonstrate` | `Demonstrate REST API operations` |
+| `Implement`   | `Implement REST API examples`     |
+| `Document`    | `Document Express concepts`       |
+
+For a learning repo, **Practice**, **Explore**, and **Experiment** are perfectly legitimate.
+
+---
+
+# ⭐ Your Core 20
+
+You absolutely **do not need to memorize this entire list**.
+
+If I were building your engineering vocabulary right now, I'd start with these:
+
+```text
+Add
+Create
+Implement
+Configure
+Initialize
+Update
+Modify
+Improve
+Extend
+Refactor
+Extract
+Simplify
+Remove
+Fix
+Handle
+Validate
+Prevent
+Test
+Document
+Integrate
+```
+
+Then gradually add:
+
+```text
+Consolidate
+Encapsulate
+Decompose
+Modularize
+Optimize
+Decouple
+Standardize
+Migrate
+Deprecate
+Harden
+```
+
+---
+
+# 🧩 The Bigger Trick
+
+Don't ask:
+
+> "Which impressive Git word should I use?"
+
+Ask:
+
+> **"What actually happened to the code?"**
+
+Then choose the verb.
+
+For example:
+
+**You created a new route**
+
+→ `Add post creation route`
+
+**You moved repeated logic into a function**
+
+→ `Extract post lookup into helper`
+
+**You fixed a bug where IDs weren't matching**
+
+→ `Fix post ID lookup`
+
+**You reorganized a giant file**
+
+→ `Refactor post routes`
+
+**You connected your app to MySQL**
+
+→ `Integrate MySQL database`
+
+**You added checks for bad input**
+
+→ `Validate post creation input`
+
+**You removed unnecessary code**
+
+→ `Remove duplicate validation logic`
+
+That's the real skill you're developing here: **precise engineering vocabulary**.
+
+And there's a nice connection to what we were talking about earlier. Your commit messages are another form of **code-to-English translation**. You're looking at the changes you made and compressing them into one precise engineering sentence.
+
+That's exactly the muscle we're trying to build. 🧠💻
