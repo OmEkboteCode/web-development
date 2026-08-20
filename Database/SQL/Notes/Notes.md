@@ -210,3 +210,267 @@ SELECT DISTINCT age FROM account;
 
 SELECT * FROM table_name;
 ```
+
+
+## Where Clause
+To define some conditions
+
+
+```sql
+SELECT col1, coll2 FROM table_name
+WHERE conditions;
+
+SELECT name, followers
+FROM user
+WHERE followers >= 200;
+```
+
+### Where Operators
+
+- Arithmetic: +(addition), -(subraction), *(multiplication), /(division), %(modulus)
+
+- Comparison Operators: =(equal to), !+ (not equal to), > , >=, <, <+=
+
+- Logical Operators: AND, OR, NOT, IN, BETWEEN, ALL, LIKE, ANY
+
+- Bitwise Operators: &(Bitwise AND), | (Bitwise OR)
+
+
+### Frequently Used Operators
+
+- AND(to check for both conditions to be true)
+
+- OR (to check for one of the conditions to be true)
+
+- BETWEEN (selects for a given range)
+
+- IN(matches any value in the list)
+
+- NOT (to negate the given condition)
+
+```sql
+INSERT INTO users
+(id, age, username, email, followers, following)
+VALUES
+(1, 14, "adam", "adam@yahoo.in", 123, 145),
+(2, 15, "bob", "bob123@gmail.com", 200, 200),
+(3, 16, "casey", "casey@email.com", 300, 306),
+(4, 17, "donald", "donald@gmail.com", 200, 105);
+
+
+SELECT username, age, followers
+FROM users
+WHERE age > 15 AND followers > 200;
+
+
+SELECT username, age, followers
+FROM users
+WHERE age BETWEEN 15 AND 17;
+
+
+SELECT username, age, followers
+FROM users
+WHERE email IN ("bob123@gmail.com", "donald@gmail.com", "abcgmail.com");
+
+
+SELECT username, followers, email
+FROM users
+WHERE age IN (14, 16);
+
+SELECT username, age, followers, email
+FROM users
+WHERE age NOT IN (14, 16);
+```
+
+
+## Limit Clause
+Sets an upper limit on number of(tuples) rows to be returned
+
+```sql
+
+SELECT col1, col2 FROM table_name
+LIMIT number;
+
+
+SELECT username, age, followers, email
+FROM users
+WHERE age > 14
+LIMIT 2;
+
+SELECT username, age, followers, email
+FROM users
+LIMIT 2;
+
+```
+
+## Order by Clause
+To sort in ascending(ASC) or descending order (DESC)
+
+```sql
+SELECT col1, col2 FROM table_name
+ORDER BY col_name(s) ASC;
+
+SELECT username, age, followers, email
+FROM users
+ORDER BY followers DESC;
+
+
+SELECT username, age, followers, email
+FROM users
+ORDER BY followers ASC;
+
+```
+
+
+## Aggregate Functions 
+Aggregate functions perform a calculation on a set of value. 
+
+- COUNT()
+- MAX ()
+- MIN()
+- SUM ()
+- AVG()
+
+
+
+Example:
+
+```sql
+
+
+SELECT max(marks)
+FROM student;
+
+```
+
+## Group by Clause
+Groups rows that have the same values into summary rows.
+<br>
+It collects data from multiple records and groups the result by one more column.
+
+```sql
+SELECT col1, col2
+FROM table_name
+GROUP BY col_name(s);
+
+SELECT age, count(id)
+FROM users
+GROUP BY age;
+```
+
+<i>Generally we use group by with some aggregation function</i>
+
+
+## Having Clause
+Similar to Where i.e applies some condition on rows. But it is used when we want to apply any <i>condition after grouping.</i>
+
+```sql
+SELECT col1, col2
+FROM table_name
+GROUP BY col_name(s)
+HAVING condition;
+
+SELECT age, max(followers)
+FROM users
+GROUP BY age
+HAVING max(followers) >200;
+```
+
+- <i>WHERE is for the table, HAVING is for a group</i>
+- <b>Grouping is necessary for having</b>
+
+## General Order
+
+SELECT column(s)
+FROM table_name
+WHERE condition
+GROUP BY column(s)
+HAVING condition
+ORDER BY column(s) ASC;
+
+```sql
+SELECT age, max(followers)
+FROM users
+GROUP BY age
+HAVING max(followers) >200
+ORDER BY age DESC;
+
+```
+
+## Table Queries
+
+
+### Update(to update existing rows)
+
+SET SQL_SAFE_UPDATES = 0;
+
+```sql
+SET SQL_SAFE_UPDATES = 0;
+
+
+
+UPDATE table_name
+SET col1 = val1, col2 = val2
+WHERE condition;
+
+```
+
+### Delete(to delete existing rows)
+
+```sql
+DELETE FROM table_name
+WHERE condition;
+
+```
+
+<b>Dont forget WHERE clause here</b>
+
+
+### Alter(to change the schema/columns)
+
+ADD Column
+```sql
+ALTER TABLE table_name
+ADD COLUMN column_name datatype constraint;
+
+ALTER TABLE users
+ADD COLUMN city VARCHAR(25) DEFAULT "Bay Lands";
+```
+
+DROP Column
+```sql
+ALTER TABLE table_name
+DROP COLUMN column_name;
+
+ALTER TABLE users
+DROP COLUMN city;
+```
+
+RENAME Table
+```sql
+ALTER TABLE table_name
+RENAME TO new_column_name;
+```
+
+CHANGE Column(rename)
+```sql
+ALTER TABLE table_name
+CHANGE COLUMN old_name new_name new_datatype new_constrait;
+
+ALTER TABLE users
+CHANGE COLUMN followers subscribers INT DEFAULT 0;
+```
+
+MODIFY Column(modify datatype/constraint)
+
+```sql
+ALTER TABLE table_name
+MODIFY col_name new_datatype new_constrait;
+
+```
+
+### Truncate(to delete table's data)
+
+```sql
+TRUNCATE TABLE table_name;
+```
