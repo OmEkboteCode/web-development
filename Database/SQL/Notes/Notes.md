@@ -413,6 +413,9 @@ UPDATE table_name
 SET col1 = val1, col2 = val2
 WHERE condition;
 
+UPDATE teacher
+SET ctc = ctc + ctc*25/100;
+
 ```
 
 ### Delete(to delete existing rows)
