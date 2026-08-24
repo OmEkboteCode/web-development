@@ -1,4 +1,4 @@
-const {faker} = require(`@faker-js/faker`);
+
 const express = require(`express`);
 const app = express();
 const mysql = require(`mysql2`);
@@ -10,16 +10,9 @@ app.use(methodOverride("_method"));
 app.use(express.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
+app.use(express.static("public"))
 
-let getRandomUser = () => {
-  return [
-    faker.string.uuid(),
-    faker.internet.username(),
-    faker.internet.email(),
-    faker.internet.password(),
 
-  ];
-};
 
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -27,9 +20,6 @@ const connection = mysql.createConnection({
     database: 'user_management',
     password: 'Stanford3117'
 });
-
-let query = `INSERT INTO users (id, username, email, password) VALUES ?`
-
 
 
 
@@ -47,6 +37,18 @@ app.get("/", (req, res) => {
     console.log(error);
 };
 });
+
+app.get("/user", (req, res) => {
+    let query = "SELECT * FROM users";
+    try {
+        connection.query(query, (error, users) => {
+            if(error) throw error;
+            res.render("showusers.ejs", {users})
+        })
+    } catch(error){
+        console.log(error)
+    }
+})
 
 
 app.listen("3000", () =>{

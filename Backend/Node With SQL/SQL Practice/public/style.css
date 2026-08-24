@@ -1,0 +1,16 @@
+body{
+    background-color: ghostwhite;
+}
+
+table,
+th, td, tr{
+    border: 3px solid black;
+}
+
+
+th{
+    background-color:aqua;
+}
+td{
+    background-color: hotpink;
+}
