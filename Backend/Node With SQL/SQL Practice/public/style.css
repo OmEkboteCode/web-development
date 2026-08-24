@@ -1,5 +1,5 @@
 body{
-    background-color: ghostwhite;
+    background-color: rgb(118, 118, 223);
 }
 
 table,
@@ -13,4 +13,8 @@ th{
 }
 td{
     background-color: hotpink;
+}
+
+button{
+    background-color:rgb(187, 39, 88);
 }

@@ -7,19 +7,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Users</h1>
+    <h1>Users List</h1>
     <table>
         <tr>
             <th>Id</th>
             <th>Username</th>
             <th>Email</th>
-            
+            <th>Edit</th>
         </tr>
     <% for(user of users) {%>
         <tr>
             <td><%= user.id %></td>
             <td><%= user.username %></td>
             <td><%= user.email %></td>
+            <td>
+                <form method="get" action="/user/<%= user.id %>/edit">
+                    <button>Edit Username</button>
+                </form>
+            </td>
             
         </tr>
     <% } %>

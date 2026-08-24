@@ -46,9 +46,26 @@ app.get("/user", (req, res) => {
             res.render("showusers.ejs", {users})
         })
     } catch(error){
-        console.log(error)
+        console.log(error);
+        res.send("some error in DB")
     }
 })
+
+
+app.get("/user/:id/edit", (req, res) => {
+    let {id} = req.params;
+    let query = `SELECT * FROM users WHERE id= '${id}'`;
+        try{
+            connection.query(query, (error, result) => {
+                if (error) throw error;
+                let user = result[0];
+                res.render("edit.ejs", {user});
+            })
+        } catch(error){
+            console.log(error);
+            res.send("some error in DB");
+        }
+});
 
 
 app.listen("3000", () =>{
