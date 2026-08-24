@@ -67,6 +67,34 @@ app.get("/user/:id/edit", (req, res) => {
         }
 });
 
+app.patch("/user/:id", (req,res) => {
+    let {id} = req.params;
+
+    let {password, formPassword, newUsername} = req.body;
+    let query = `SELECT * FROM users WHERE id='${id}'`;
+    try{
+        connection.query(query, (err, result) => {
+            if (err) throw err;
+            let user = result[0];
+            if (formPassword != user.password){
+                return res.send("Wrong Password")
+            } else {
+                let query2 = `UPDATE users SET username='${newUsername}' WHERE id='${id}'`;
+                connection.query(query2, (error, result) => {
+                    if(error) throw error;
+                    res.redirect("/user")
+                })
+            }
+        })
+    } catch (err) {
+        console.log(err);
+        res.send("some error in DB")
+    }
+
+})
+
+
+
 
 app.listen("3000", () =>{
     console.log("Listening to port: 3000")
