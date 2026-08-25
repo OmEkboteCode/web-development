@@ -47,9 +47,9 @@ app.get("/user", (req, res) => {
         })
     } catch(error){
         console.log(error);
-        res.send("some error in DB")
+        res.send("some error in DB");
     }
-})
+});
 
 
 app.get("/user/:id/edit", (req, res) => {
@@ -82,21 +82,21 @@ app.patch("/user/:id", (req,res) => {
                 let query2 = `UPDATE users SET username='${newUsername}' WHERE id='${id}'`;
                 connection.query(query2, (error, result) => {
                     if(error) throw error;
-                    res.redirect("/user")
+                    res.redirect("/user");
                 })
             }
         })
     } catch (err) {
         console.log(err);
-        res.send("some error in DB")
+        res.send("some error in DB");
     }
 
 });
 
 
 app.get("/user/new", (req, res) => {
-    res.render("newuser.ejs")
-})
+    res.render("newuser.ejs");
+});
 
 
 app.post("/user", (req, res) => {
@@ -114,11 +114,24 @@ app.post("/user", (req, res) => {
             res.redirect("/user");
         })
     } catch(error) {
-        console.log(error)
+        console.log(error);
     }
     
 });
 
+app.delete("/user/:id", (req, res) => {
+    let {id} = req.params;
+    let query = `DELETE FROM users WHERE id='${id}'`;
+    try {
+        connection.query(query, (error, result) => {
+            if(error) throw error;
+            console.log(result);
+            res.redirect("/user");
+        });
+    } catch (error) {
+        console.log(error);
+    }
+});
 
 app.listen("3000", () =>{
     console.log("Listening to port: 3000");
