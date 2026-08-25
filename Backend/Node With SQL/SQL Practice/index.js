@@ -67,7 +67,53 @@ app.get("/user/:id/edit", (req, res) => {
         }
 });
 
-app.patch("/user/:id", (req,res) => {
+app.get("/user/:id/email", (req, res) => {
+    let {id} = req.params;
+    let query = `SELECT * FROM users WHERE id= '${id}'`
+    try{
+        connection.query(query, (error, result) => {
+            if(error) throw error;
+            let user = result[0];
+            res.render("editemail.ejs", {user});
+        });
+    } catch(error){
+        console.log(error);
+        res.send("some error in DB");
+    }
+})
+
+app.patch("/user/:id/email", (req,res) => {
+    let {id} = req.params;
+
+    let {formPassword, newEmail} = req.body;
+    let query = `SELECT * FROM users WHERE id='${id}'`;
+    try{
+        connection.query(query, (err, result) => {
+            if (err) throw err;
+            let user = result[0];
+            if (formPassword != user.password){
+                return res.send("Wrong Password")
+            } else {
+                let query2 = `UPDATE users SET email='${newEmail}' WHERE id='${id}'`;
+                connection.query(query2, (error, result) => {
+                    if(error) throw error;
+                    res.redirect("/user");
+                })
+            }
+        })
+    } catch (err) {
+        console.log(err);
+        res.send("some error in DB");
+    }
+
+});
+
+
+
+
+
+
+app.patch("/user/:id/username", (req,res) => {
     let {id} = req.params;
 
     let {formPassword, newUsername} = req.body;
