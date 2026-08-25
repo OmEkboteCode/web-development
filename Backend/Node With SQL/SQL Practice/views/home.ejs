@@ -4,9 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Welcome to User Management</h1>
     <h3>The Number of Users: <%= count %> </h3>
+    <br>
+    <br>
+    <form action="/user">
+        <button class="nav">View All Users</button>
+    </form>
+  
+    <br>
+    <form action="/user/new">
+        <button class="nav">View All Users</button>
+    </form>
 </body>
 </html>
