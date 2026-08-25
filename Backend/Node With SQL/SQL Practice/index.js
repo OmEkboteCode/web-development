@@ -1,4 +1,4 @@
-
+const { faker } = require('@faker-js/faker');
 const express = require(`express`);
 const app = express();
 const mysql = require(`mysql2`);
@@ -70,7 +70,7 @@ app.get("/user/:id/edit", (req, res) => {
 app.patch("/user/:id", (req,res) => {
     let {id} = req.params;
 
-    let {password, formPassword, newUsername} = req.body;
+    let {formPassword, newUsername} = req.body;
     let query = `SELECT * FROM users WHERE id='${id}'`;
     try{
         connection.query(query, (err, result) => {
@@ -91,11 +91,35 @@ app.patch("/user/:id", (req,res) => {
         res.send("some error in DB")
     }
 
+});
+
+
+app.get("/user/new", (req, res) => {
+    res.render("newuser.ejs")
 })
 
 
+app.post("/user", (req, res) => {
+    let {newUsername, email, password} = req.body;
+    let id = faker.string.uuid();
+    let values = [[id, newUsername, email, password]];
+    let query = `INSERT INTO users (id, username, email, password) VALUES ?`
+    try {
+        console.log(query);
+        console.log(values);
+        connection.query(query, [values], (error, result) => {
+            if (error) throw error;
+            console.log(result);
+
+            res.redirect("/user");
+        })
+    } catch(error) {
+        console.log(error)
+    }
+    
+});
 
 
 app.listen("3000", () =>{
-    console.log("Listening to port: 3000")
+    console.log("Listening to port: 3000");
 });
