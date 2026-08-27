@@ -115,6 +115,45 @@ Matches if the value is not equal to any of a given list of values.
 
 - $and, $nor, $not, $or
 
+#### Fields
+
+- $inc
+
+Increments the value of the field by the specified amount.
+```js
+Company.updateMany({country: "USA"}, {$inc: {employees: 10000}})
+  .then((res) => console.log(res))
+  .catch((err) => console.log(err));
+
+```
+- $min
+
+Only updates the field if the specified value is less than the existing field value.
+
+- $max
+
+Only updates the field if the specified value is greater than the existing field value.
+
+- $mul
+
+Multiplies the value of the field by the specified amount.
+
+- $rename
+
+Renames a field.
+
+- $set
+
+Sets the value of a field in a document.
+
+- $setOnInsert
+
+Sets the value of a field if an update results in an insert of a document. Has no effect on update operations that modify existing documents.
+
+- $unset
+
+Removes the specified field from a document.
+
 
 ## UPDATE in DB
 an Update operation consists of adding, removing, or modifying fields in one or more documents
