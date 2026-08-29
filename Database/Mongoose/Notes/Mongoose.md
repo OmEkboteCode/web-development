@@ -195,7 +195,7 @@ User.findOneAndUpdate({ name: "Tony" }, { age: 27 }) //First finds it and then u
   });
 // For updated/modified document to be return, you need to use options
 
-User.findOneAndUpdate({ name: "Tony" }, { age: 27 }, { new: true }) //[options.new=false]
+User.findOneAndUpdate({ name: "Tony" }, { age: 27 }, { returnDocument: 'after' }) //[options. returnDocument]
   .then((res) => {
     console.log(res);
   })
