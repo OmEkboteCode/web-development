@@ -169,13 +169,11 @@ app.get("/api", checkToken, (req, res) => {
 
 - There are many types of error like syntax error
 
-- Express Default Error Handler 
+- Express Default Error Handler
 
 - Express comes with a built-in error handler that takes care of any errors that might be encountered in the app. This default error-handling middleware function is added at the end of the middleware function stack.
 
-
 ### Custom Error Handling
-
 
 ```js
 const checkToken = (req, res, next) => {
@@ -186,3 +184,26 @@ const checkToken = (req, res, next) => {
   throw new Error("ACCESS DENIDED!");
 };
 ```
+
+### Some Important Concepts
+
+- Middleware can enrich the request object, and later handlers can use that information.
+
+```js
+app.use("/", (req, res, next) => {
+  req.time = new Date(Date.now()).toString();
+  console.log(req.time);
+  next();
+});
+
+app.get("/", (req, res) => {
+  res.send(req.time);
+});
+```
+
+- This is an important Express pattern:
+app.get("/admin", checkToken, handler)
+You now have:
+route → middleware → handler
+rather than only:
+route → handler
