@@ -258,6 +258,7 @@ Keep these JSX rules in mind:
    ```jsx
    <p>{2 + 3}</p>
    ```
+5. ** Use camelCase most of the things **
 
 ## 9. React Fragments
 
@@ -333,6 +334,8 @@ function Status({ isOnline }) {
 
 ## 11. Structuring Components
 
+
+
 Split an interface into components when a part has a clear purpose or needs to be reused.
 
 ```jsx
@@ -384,6 +387,8 @@ function App() {
 ## 12. Styling Components
 
 React components can be styled with regular CSS. Add a `className` in JSX and define the class in a CSS file.
+
+- All components have their own .css files(like App.css Product.css)
 
 ```jsx
 function Button() {

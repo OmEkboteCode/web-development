@@ -1,5 +1,10 @@
 function Title() {
-  return <h1>I am the Title!</h1>;
+  let price = 25;
+  return (
+    <div>
+      <p>Total = {price*2}</p>
+    </div>
+  )
 }
 
 export default Title

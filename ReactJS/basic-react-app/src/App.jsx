@@ -1,5 +1,6 @@
 import "./App.css";
-import "./Title.jsx"
+// import Title from "./Title.jsx";
+import ProductTab from "./ProductTab.jsx";
 
 function Description() {
   return <h3>I am the Description!</h3>;
@@ -7,11 +8,9 @@ function Description() {
 
 function App() {
   return (
-    <div>
-      <h1>This is my app component</h1>
-      <Description />
-      <Title />
-    </div>
+    <>
+      <ProductTab></ProductTab>
+    </>
   );
 }
 
