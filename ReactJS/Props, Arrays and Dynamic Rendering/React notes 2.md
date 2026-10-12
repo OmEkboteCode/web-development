@@ -58,10 +58,10 @@ Objects can also be passed inside arrays:
 ```jsx
 const products = [
   { name: "Laptop", price: 50000 },
-  { name: "Phone", price: 20000 }
+  { name: "Phone", price: 20000 },
 ];
 
-<ProductList products={products} />
+<ProductList products={products} />;
 ```
 
 ---
@@ -89,20 +89,22 @@ function App() {
 When rendering lists, give each element a unique `key`.
 
 ```jsx
-{names.map((name, index) => (
-  <p key={index}>{name}</p>
-))}
+{
+  names.map((name, index) => <p key={index}>{name}</p>);
+}
 ```
 
 For objects, preferably use a unique ID:
 
 ```jsx
-{products.map((product) => (
-  <div key={product.id}>
-    <h3>{product.name}</h3>
-    <p>{product.price}</p>
-  </div>
-))}
+{
+  products.map((product) => (
+    <div key={product.id}>
+      <h3>{product.name}</h3>
+      <p>{product.price}</p>
+    </div>
+  ));
+}
 ```
 
 **Important:** `key` helps React identify individual elements in a list.
@@ -123,18 +125,32 @@ function Message({ loggedIn }) {
 
   return <h2>Please log in.</h2>;
 }
+
+{
+  price >= 10000 ? <p> Discount: 5%</p> : null;
+}
+{
+  price >= 10000 && <p> Discount: 5%</p>;
+}
+{
+  price >= 30000 ? <p>Discount 5%</p> : <a href="/">Get Discount</a>;
+}
 ```
 
 ### Ternary operator
 
 ```jsx
-{loggedIn ? <p>Welcome!</p> : <p>Please log in.</p>}
+{
+  loggedIn ? <p>Welcome!</p> : <p>Please log in.</p>;
+}
 ```
 
 ### Logical `&&`
 
 ```jsx
-{loggedIn && <p>Welcome!</p>}
+{
+  loggedIn && <p>Welcome!</p>;
+}
 ```
 
 The element appears only when `loggedIn` is truthy.
@@ -149,11 +165,7 @@ React can apply styles dynamically based on values or conditions.
 
 ```jsx
 function Button({ active }) {
-  return (
-    <button className={active ? "active" : "inactive"}>
-      Button
-    </button>
-  );
+  return <button className={active ? "active" : "inactive"}>Button</button>;
 }
 ```
 
@@ -164,11 +176,24 @@ function Button({ active }) {
   return (
     <button
       style={{
-        backgroundColor: active ? "green" : "gray"
+        backgroundColor: active ? "green" : "gray",
       }}
     >
       Button
     </button>
+  );
+}
+
+function Product({ title, price, features }) {
+    let isDiscount = price >= 30000;
+  let styles = { backgroundColor: isDiscount ? "yellow" : null };
+
+  return (
+    <div className="Product" style={styles}>
+      <h3>{title}</h3>
+      <h5>Price: {price}</h5>
+      {isDiscount && <p>Discount 5%</p>}
+    </div>
   );
 }
 ```
@@ -179,13 +204,8 @@ Styles can therefore change depending on **props, state, or other values**.
 
 ## 6. Activity
 
-The activity applies the concepts learned in the module by combining:
-
-- Props
-- Arrays
-- Array rendering
-- Conditional rendering
-- Dynamic styling
+Show a Hello Message to the user in different colors
+Pass 2 values as props: userName & textColor
 
 ---
 
@@ -215,7 +235,7 @@ A product can be represented as an object:
 const product = {
   title: "Laptop",
   price: 50000,
-  available: true
+  available: true,
 };
 ```
 
