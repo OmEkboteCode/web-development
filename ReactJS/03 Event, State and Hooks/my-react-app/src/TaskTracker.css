@@ -1,0 +1,13 @@
+.completed-task {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.task-tracker li {
+  margin-bottom: 12px;
+}
+
+.task-tracker input {
+  padding: 8px;
+  margin-right: 8px;
+}
